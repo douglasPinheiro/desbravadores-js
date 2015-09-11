@@ -67,3 +67,137 @@ router.route('/')
             }
       })
     });
+
+    /* GET New Member page. */
+    router.get('/new', function(req, res) {
+        res.render('members/new', { title: 'Novo Membro' });
+    });
+
+    router.param('id', function(req, res, next, id) {
+        mongoose.model('member').findById(id, function (err, member) {
+            if (err) {
+                console.log(id + ' Não encontrado');
+                res.status(404)
+                var err = new Error('Não encontrado');
+                err.status = 404;
+                res.format({
+                    html: function(){
+                        next(err);
+                     },
+                    json: function(){
+                           res.json({message : err.status  + ' ' + err});
+                     }
+                });
+            } else {
+                req.id = id;
+                next();
+            }
+        });
+    });
+
+    router.route('/:id')
+      .get(function(req, res) {
+        mongoose.model('member').findById(req.id, function (err, member) {
+          if (err) {
+            console.log('Prolema ao obter: ' + err);
+          } else {
+            console.log('Obtendo id do membro: ' + member._id);
+            var memberdob = member.dob.toISOString();
+            memberdob = memberdob.substring(0, memberdob.indexOf('T'))
+            res.format({
+              html: function(){
+                  res.render('members/show', {
+                    "memberdob" : memberdob,
+                    "member" : member
+                  });
+              },
+              json: function(){
+                  res.json(member);
+              }
+            });
+          }
+        });
+      });
+
+    router.route('/:id/edit')
+    	.get(function(req, res) {
+    	    mongoose.model('member').findById(req.id, function (err, member) {
+    	        if (err) {
+    	            console.log('Falha ao obter membro ' + err);
+    	        } else {
+    	            console.log('Obténdo membro : ' + member._id);
+                  var memberdob = member.dob.toISOString();
+                  memberdob = memberdob.substring(0, memberdob.indexOf('T'))
+    	            res.format({
+    	                html: function(){
+    	                       res.render('members/edit', {
+    	                          title: 'Membro' + member._id,
+                                "memberdob" : memberdob,
+    	                          "member" : member
+    	                      });
+    	                 },
+    	                json: function(){
+    	                       res.json(member);
+    	                 }
+    	            });
+    	        }
+    	    });
+    	})
+    	.put(function(req, res) {
+    	    var name = req.body.name;
+    	    var badge = req.body.badge;
+    	    var dob = req.body.dob;
+    	    var company = req.body.company;
+    	    var isloved = req.body.isloved;
+
+    	    mongoose.model('member').findById(req.id, function (err, member) {
+    	        //update it
+    	        member.update({
+    	            name : name,
+    	            badge : badge,
+    	            dob : dob,
+    	            isloved : isloved
+    	        }, function (err, memberID) {
+    	          if (err) {
+    	              res.send("Problema na atualização: " + err);
+    	          }
+    	          else {
+    	                  res.format({
+  	                      html: function(){
+    	                           res.redirect("/members/" + member._id);
+                          },
+    	                    json: function(){
+    	                           res.json(member);
+    	                    }
+    	                  });
+    	           }
+    	        })
+    	    });
+    	})
+    	.delete(function (req, res){
+    	    mongoose.model('member').findById(req.id, function (err, member) {
+    	        if (err) {
+    	            return console.error(err);
+    	        } else {
+    	            member.remove(function (err, member) {
+    	                if (err) {
+    	                    return console.error(err);
+    	                } else {
+    	                    console.log('Removendo membro: ' + member._id);
+    	                    res.format({
+    	                        html: function(){
+    	                               res.redirect("/members");
+    	                        },
+    	                        json: function(){
+    	                               res.json({message : 'deleted',
+    	                                   item : member
+    	                               });
+    	                         }
+    	                      });
+    	                }
+    	            });
+    	        }
+    	    });
+    	});
+
+module.exports = router;
