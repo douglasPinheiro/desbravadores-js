@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+    h1.
+        #{title}
+    form#formAddMember(name="addmember",method="post",action="/members")
+        p Nome: 
+            input#inputName(type="text", placeholder="Nome Completo", name="name")
+        p Email: 
+            input#inputName(type="email", placeholder="email@email.com.br", name="email")
+        p Data de Nascimento: 
+            input#inputName(type="date", name="birthday")
+        p Telefone: 
+            input#inputName(type="text", placeholder="11 0000-0000", name="phone")
+        p Celular: 
+            input#inputName(type="text", placeholder="11 90000-0000", name="cellphone")
+        p
+            button#btnSubmit(type="submit") Salvar
