@@ -3,15 +3,15 @@ block content
         # ID #{member._id}
     form(action='/members/#{member._id}/edit',method='post',name='updatemember',enctype='application/x-www-form-urlencoded')
         p Nome: 
-            input#inputName(type="text", value='#{member.name}' placeholder="ex. John Smith", name="name")
+            input#name(type="text", value='#{member.name}', placeholder="ex. John Smith", name="name")
         p Email: 
-            input#inputName(type="email", placeholder="email@exemplo.com.br", name="email")
+            input#email(type="email", value='#{member.email}', placeholder="email@exemplo.com.br", name="email")
         p Data de Nascimento: 
-            input#inputName(type="date", name="birthday")
+            input#birthday(type="date", value='#{member.birthday}', name="birthday")
         p Telefone: 
-            input#inputName(type="text", placeholder="11 0000-0000", name="phone")
+            input#phone(type="text", value='#{member.phone}', placeholder="11 0000-0000", name="phone")
         p Celular:  
-            input#inputName(type="text", placeholder="11 90000-0000", name="cellphone")
+            input#cellphone(type="text", value='#{member.cellphone}', placeholder="11 90000-0000", name="cellphone")
         p 
             input(type='hidden',value='PUT',name='_method')
         p

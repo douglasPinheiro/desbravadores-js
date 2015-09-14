@@ -83,10 +83,10 @@ router.route('/')
                 res.format({
                     html: function(){
                         next(err);
-                     },
+                    },
                     json: function(){
-                           res.json({message : err.status  + ' ' + err});
-                     }
+                        res.json({message : err.status  + ' ' + err});
+                    }
                 });
             } else {
                 req.id = id;
@@ -102,12 +102,9 @@ router.route('/')
             console.log('Prolema ao obter: ' + err);
           } else {
             console.log('Obtendo id do membro: ' + member._id);
-            var memberdob = member.dob.toISOString();
-            memberdob = memberdob.substring(0, memberdob.indexOf('T'))
             res.format({
               html: function(){
                   res.render('members/show', {
-                    "memberdob" : memberdob,
                     "member" : member
                   });
               },
@@ -123,40 +120,37 @@ router.route('/')
     	.get(function(req, res) {
     	    mongoose.model('member').findById(req.id, function (err, member) {
     	        if (err) {
-    	            console.log('Falha ao obter membro ' + err);
+                  console.log('Falha ao obter membro ' + err);
     	        } else {
     	            console.log('Obténdo membro : ' + member._id);
-                  var memberdob = member.dob.toISOString();
-                  memberdob = memberdob.substring(0, memberdob.indexOf('T'))
-    	            res.format({
+                  res.format({
     	                html: function(){
-    	                       res.render('members/edit', {
-    	                          title: 'Membro' + member._id,
-                                "memberdob" : memberdob,
-    	                          "member" : member
-    	                      });
+  	                       res.render('members/edit', {
+  	                          title: 'Membro' + member._id,
+                              "member" : member
+  	                      });
     	                 },
     	                json: function(){
-    	                       res.json(member);
-    	                 }
+	                         res.json(member);
+                      }
     	            });
     	        }
     	    });
     	})
     	.put(function(req, res) {
-    	    var name = req.body.name;
-    	    var badge = req.body.badge;
-    	    var dob = req.body.dob;
-    	    var company = req.body.company;
-    	    var isloved = req.body.isloved;
+    	    var name = req.body.name,
+    	        email = req.body.email,
+      	      date = req.body.date,
+      	      phone = req.body.phone,
+      	      cellphone = req.body.cellphone;
 
     	    mongoose.model('member').findById(req.id, function (err, member) {
-    	        //update it
     	        member.update({
     	            name : name,
-    	            badge : badge,
-    	            dob : dob,
-    	            isloved : isloved
+                  email : email,
+    	            date : date,
+                  phone : phone,
+    	            cellphone : cellphone
     	        }, function (err, memberID) {
     	          if (err) {
     	              res.send("Problema na atualização: " + err);
@@ -164,10 +158,10 @@ router.route('/')
     	          else {
     	                  res.format({
   	                      html: function(){
-    	                           res.redirect("/members/" + member._id);
+  	                           res.redirect("/members/" + member._id);
                           },
     	                    json: function(){
-    	                           res.json(member);
+  	                           res.json(member);
     	                    }
     	                  });
     	           }
