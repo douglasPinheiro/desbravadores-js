@@ -6,7 +6,7 @@ var express = require('express'),
     bodyParser = require('body-parser');
 
 var db = require('./model/db'),
-    member = require('./model/members');
+    member = require('./model/member');
 
 var routes = require('./routes/index'),
     members = require('./routes/members');
