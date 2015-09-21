@@ -1,0 +1,7 @@
+{
+  "name": "Desbravadores-js",
+  "dependencies": {
+    "jquery": "2.1.4",
+    "ember": "^2.0.2"
+  }
+}
