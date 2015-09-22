@@ -37,5 +37,6 @@
   },
   "devDependencies": {
     "express-generator": "^4.13.1",
+    "ember-cli": "^1.13.8"
   }
 }
