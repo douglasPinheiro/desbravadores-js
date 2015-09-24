@@ -7,14 +7,42 @@
 </head>
 <body>
     <script type="text/x-handlebars" id="index">
-        <h1>{{ model }}</h1>
+        <h1>Bem vindo ao Desbravadores JS</h1>
         {{#link-to "list-members" tagName = 'a' }}
-            Listagem de Membros
+            Área de Membros
         {{/link-to}}
+        <br>
+
+        <h3>Last commits</h3>
+
+        <ul>
+            {{#each model as |commit|}}
+              <li>
+                <div>{{commit.commit.message}}</div>
+                <div class="issue-title">
+                  <a href={{commit.url}}>#{{commit.sha}}</a>
+                </div>
+                <div>
+                  Commiter <strong>@{{commit.commiter.name}}</strong>
+                </div>
+              </li>
+            {{/each}}
+        </ul>
     </script>
 
     <script type="text/x-handlebars" id="list-members">
-        <h2>{{ pageName }}</h2>
+        <h2>Listagem de Membros</h2>
+        <ul>
+            {{#each model as |member|}}
+              <li>
+                  <h3>{{member.name}}</h3>
+                  <span>{{member.email}}</span>
+                  <span>{{member.birthday}}</span>
+                  <span>{{member.phone}}</span>
+                  <span>{{member.cellphone}}</span>
+              </li>
+            {{/each}}
+        </ul>
     </script>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
