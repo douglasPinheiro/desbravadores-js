@@ -1,20 +1,23 @@
 App = Ember.Application.create();
 
 App.Router.map(function() {
-    this.route('list-members', { path: 'listagem-de-membros' })
+    this.route('list-members', { path: 'listagem-de-membros' });
+    this.route('create-member', { path: 'criacao-de-membro' });
 });
 
 App.ListMembersRoute = Ember.Route.extend({
     model: function() {
-        var url = 'http://localhost:3000/members';
-        return Ember.$.getJSON(url).then(function(data) {
+        return Ember.$.getJSON('/members').then(function(data) {
             return data;
         });
     }
 });
 
-App.ListMembersController = Ember.Controller.extend({
-    pageName: 'Listagem de membros',
+App.CreateMemberRoute = Ember.Route.extend({
+
+})
+
+App.MemberController = Ember.Controller.extend({
 
 });
 

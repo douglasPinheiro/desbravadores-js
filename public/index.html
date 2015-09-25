@@ -12,9 +12,7 @@
             Área de Membros
         {{/link-to}}
         <br>
-
         <h3>Last commits</h3>
-
         <ul>
             {{#each model as |commit|}}
               <li>
@@ -32,6 +30,9 @@
 
     <script type="text/x-handlebars" id="list-members">
         <h2>Listagem de Membros</h2>
+        {{#link-to "create-member" tagName = 'a' }}
+            Novo Desbravador
+        {{/link-to}}
         <ul>
             {{#each model as |member|}}
               <li>
@@ -43,6 +44,18 @@
               </li>
             {{/each}}
         </ul>
+    </script>
+
+    <script type="text/x-handlebars" id="create-member">
+        <h2>Cadastro de Membro</h2>
+
+        <p>{{input name="name" placeholder="Nome Completo" type="text"}}</p>
+        <p>{{input name="email" placeholder="Email" type="text"}}</p>
+        <p>{{input name="birthday" type="date"}}</p>
+        <p>{{input name="phone" type="text"}}</p>
+        <p>{{input name="cellphone" type="text"}}</p>
+
+        <button>Salvar</button>
     </script>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
