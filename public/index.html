@@ -49,13 +49,13 @@
     <script type="text/x-handlebars" id="create-member">
         <h2>Cadastro de Membro</h2>
 
-        <p>{{input name="name" placeholder="Nome Completo" type="text"}}</p>
-        <p>{{input name="email" placeholder="Email" type="text"}}</p>
-        <p>{{input name="birthday" type="date"}}</p>
-        <p>{{input name="phone" type="text"}}</p>
-        <p>{{input name="cellphone" type="text"}}</p>
+        <p>{{input name="member.name" placeholder="Nome Completo" type="text"}}</p>
+        <p>{{input name="member.email" placeholder="Email" type="text"}}</p>
+        <p>{{input name="member.birthday" type="date"}}</p>
+        <p>{{input name="member.phone" type="text"}}</p>
+        <p>{{input name="member.cellphone" type="text"}}</p>
 
-        <button>Salvar</button>
+        <button {{ action 'submit' }} >Salvar</button>
     </script>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>

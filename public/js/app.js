@@ -13,9 +13,25 @@ App.ListMembersRoute = Ember.Route.extend({
     }
 });
 
+App.Person = DS.Model.extend({
+    name: DS.attr('string'),
+    email: DS.attr('string'),
+    birthday:  DS.attr('date'),
+    phone:  DS.attr('string'),
+    cellphone:  DS.attr('string')
+});
+
 App.CreateMemberRoute = Ember.Route.extend({
 
 })
+
+App.CreateMemberController = Ember.Controller.extend({
+    actions: {
+        submit: function() {
+            console.info('post here');
+        }
+    }
+});
 
 App.MemberController = Ember.Controller.extend({
 
