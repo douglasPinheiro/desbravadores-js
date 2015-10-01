@@ -1,6 +1,6 @@
 # ![Image of Yaktocat](http://i.imgur.com/sISqxM8.png) Desbravadores JS 
 
-## [![GitHub license](https://img.shields.io/badge/caution-in%20progress-yellow.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+### [![GitHub license](https://img.shields.io/badge/caution-in%20progress-yellow.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
 Toy Application For Pathfinders Club Managment
 
