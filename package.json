@@ -1,10 +1,10 @@
 {
-  "name": "Desbravadores-js",
+  "name": "Desbravadores JS",
   "version": "0.0.0",
-  "description": "Sistema de Gerenciamento de Clube de Desbravadores em MEAN",
+  "description": "Toy Application For Pathfinders Club Managment in NodeJS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "start": "node ./bin/www"
   },
   "repository": {
@@ -12,14 +12,10 @@
     "url": "https://github.com/henriquebelfort/desbravadores-js.git"
   },
   "keywords": [
-    "Clube Desbravadores",
-    "Mongo",
-    "Express",
-    "Ember JS",
-    "Node.js"
+    "Clube Desbravadores"
   ],
   "author": "henriquebelfort",
-  "license": "Apache",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/henriquebelfort/desbravadores-js/issues"
   },
