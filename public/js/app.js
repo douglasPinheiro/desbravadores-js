@@ -1,8 +1,18 @@
-App = Ember.Application.create();
+//import DS from 'ember-data';
+
+App = Ember.Application.create({ LOG_TRANSITIONS: true });
 
 App.Router.map(function() {
     this.route('list-members', { path: 'listagem-de-membros' });
     this.route('create-member', { path: 'criacao-de-membro' });
+});
+
+App.Store = DS.Store.extend({
+  adapter: 'App.ApplicationAdapter'
+});
+
+DS.RESTAdapter.reopen({
+  host: 'http://localhost:3000'
 });
 
 App.ListMembersRoute = Ember.Route.extend({
@@ -13,28 +23,34 @@ App.ListMembersRoute = Ember.Route.extend({
     }
 });
 
-App.Person = DS.Model.extend({
-    name: DS.attr('string'),
-    email: DS.attr('string'),
-    birthday:  DS.attr('date'),
-    phone:  DS.attr('string'),
-    cellphone:  DS.attr('string')
+App.Member = Ember.Object.extend({
+    name : "",
+    email : "",
+    birthday : "",
+    phone : "",
+    cellphone : "",
 });
 
 App.CreateMemberRoute = Ember.Route.extend({
+    model: function(){
+        return App.Member.create();
+    },
+    setupController : function(controller, model){
+        controller.set("model", model);
+    }
+});
 
-})
+App.ApplicationAdapter = DS.RESTAdapter.extend({
+    host: 'https://localhost:3000'
+});
 
 App.CreateMemberController = Ember.Controller.extend({
     actions: {
         submit: function() {
-            console.info('post here');
+            var obj = this.get('model');
+            console.info(JSON.stringify(obj));
         }
     }
-});
-
-App.MemberController = Ember.Controller.extend({
-
 });
 
 App.IndexRoute = Ember.Route.extend({
