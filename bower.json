@@ -1,8 +1,6 @@
 {
   "name": "Desbravadores-js",
   "dependencies": {
-    "ember": "^2.0.2",
-    "ember-data": "~2.1.0",
     "jquery": "2.1.4",
     "semantic-ui": "~2.1.4"
   }

@@ -1,4 +1,4 @@
-# ![Image of Yaktocat](http://i.imgur.com/sISqxM8.png) Desbravadores JS 
+# ![Image of Yaktocat](http://i.imgur.com/sISqxM8.png) Desbravadores JS
 
 ### [![GitHub license](https://img.shields.io/badge/caution-in%20progress-yellow.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
@@ -26,7 +26,6 @@ And, In another tab:
 
 ### Tech
 * [Mongo]
-* [EmberJS]
 * [Express]
 * [NodeJS]
 
@@ -37,7 +36,6 @@ Get a Issue, fork, create a branch, code and PR!
 
 [//]: # (References)
 
-[EmberJS]: <http://emberjs.com>
 [NodeJS]: <https://nodejs.org/>
 [Mongo]: <https://www.mongodb.org/>
 [Express]: <http://expressjs.com/>
