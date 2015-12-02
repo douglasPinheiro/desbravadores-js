@@ -1,3 +1,14 @@
+-function prettyDate(date){
+    - if (date) {
+      -var d = date.getDate();
+      -var monthNames = [ "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" ];
+      -var m = monthNames[date.getMonth()];
+      -var y = date.getFullYear();
+      -return d + '/' + m + '/' +y;  
+    -}
+    -return '';
+-}
+
 block content
     h1.
         # ID #{member._id}
@@ -7,7 +18,7 @@ block content
         p Email: 
             input#email(type="email", value='#{member.email}', placeholder="email@exemplo.com.br", name="email")
         p Data de Nascimento: 
-            input#birthday(type="date", value='#{member.birthday}', name="birthday")
+            input#birthday(type="text", value='#{prettyDate(member.birthday)}', name="birthday")
         p Telefone: 
             input#phone(type="text", value='#{member.phone}', placeholder="11 0000-0000", name="phone")
         p Celular:  

@@ -2,7 +2,10 @@ var express = require('express'),
     router = express.Router(),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
-    methodOverride = require('method-override');
+    methodOverride = require('method-override'),
+    moment = require('moment');
+
+moment().format();
 
 // configs
 router.use(bodyParser.urlencoded({ extended: true }));
