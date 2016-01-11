@@ -3,9 +3,16 @@ html
   head
     title= 'Desbravadores JS'
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='bower_components/semantic-ui/dist/semantic.min.css')
     link(rel='stylesheet', href='bower_components/normalize-css/normalize.css')
   body
-    block content
+    header.ui.fixed.inverted.menu
+      .ui.container
+        a(href="/").item Home
+        a(href="/members").item Member
+    
+    #container
+      block content
 
     script(src='bower_components/jquery/dist/jquery.min.js')
     script(src='bower_components/ember/ember-template-compiler.js')
