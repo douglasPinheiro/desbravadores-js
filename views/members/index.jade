@@ -4,21 +4,31 @@ block content
     h1.
          #{title}
     a(href='/members/new') Novo Membro
-   
-    ul
+
+    table.ui.celled.table
+      thead
+        tr
+          th Name
+          th Email
+          th Birthday
+          th Phone
+          th Cellphone
+          th Id
+          th Actions
+      tbody
         - each member, i in members
-            li
-                = member.name
-                = member.email
-                = member.birthday
-                = member.phone
-                = member.cellphone
-                = member._id
-                form(action='/members/#{member._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
-                    input(type='hidden',value='DELETE',name='_method')
-                    button(type='submit').
-                        Excluir
-                p
-                    a(href='/members/#{member._id}/edit') Editar
-                p
-                    a(href='/members/#{member._id}') Exibir
+          tr
+            td= member.name
+            td= member.email
+            td= member.birthday
+            td= member.phone
+            td= member.cellphone
+            td= member._id
+            td
+              form(action='/members/#{member._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
+              input(type='hidden',value='DELETE',name='_method')
+              button(type='submit') Excluir
+              p
+                a(href='/members/#{member._id}/edit') Editar
+              p
+                a(href='/members/#{member._id}') Exibir

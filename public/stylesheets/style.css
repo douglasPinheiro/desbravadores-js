@@ -1,11 +1,29 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Quicksand", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
 }
 
+a, h1, h2, h3, h4, h5, h6, div {
+	font-family: "Quicksand", Helvetica, Arial, sans-serif !important;
+}
+
 #container {
     padding: 50px 20px 20px 20px;
+}
+
+#welcome {
+	position: absolute;
+	top: 40%;
+	left: 30%;
+}
+
+#welcome > h1 {
+	font-size: 4em;
+}
+
+#welcome > p {
+	font-size: 16px;
 }
